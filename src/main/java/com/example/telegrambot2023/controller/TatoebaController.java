@@ -15,7 +15,7 @@ public class TatoebaController {
     ApiService service;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @RequestMapping(value = "/translate/example")
+    @GetMapping(value = "/translate/example")
     public String getExample(@RequestParam("word") String word, @RequestParam("from") String from
             , @RequestParam("to") String to) throws IOException {
         return service.gtExample(word, from, to);
