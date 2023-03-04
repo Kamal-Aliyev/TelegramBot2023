@@ -49,16 +49,13 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         UserEntity user = userRepo.findUsersEntityByEmail(request.getEmail());
-        if (user == null){
-            return ResponseEntity.ok("Please sign up first !");
-        }else {
             AfterSignInResponseDto build = AfterSignInResponseDto.builder()
                     .token(token)
                     .email(user.getEmail())
                     .role(user.getRole())
                     .build();
             return ResponseEntity.ok(build);
-        }
+
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
